@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ExamController!{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Badania</h1>
+
+        {{ form_start(form) }}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th style="width: 20%">Data</th>
+                <th style="width: 30%">Nazwa</th>
+                <th style="width: 30%">Opis</th>
+                <th style="width: 20%">
+                    <button type="button" id="add-button" class="btn btn-success">Dodaj</button>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="add-element">
+                <td>-</td>
+                <td>
+                    {{ form_widget(form.name) }}
+                    {{ form_help(form.name) }}
+                    {{ form_errors(form.name) }}
+                </td>
+                <td>
+                    {{ form_widget(form.description) }}
+                    {{ form_help(form.description) }}
+                    {{ form_errors(form.description) }}
+                </td>
+                <td>
+                    <button type="submit" id="save-button" class="btn btn-success">Zapisz</button>
+                    <button type="button" id="remove-button" class="btn btn-danger">Usuń</button>
+                </td>
+            </tr>
+            {% for exam in exams %}
+                <tr>
+                    <td>{{ exam.createDt|date('d.m.Y H:i') }}</td>
+                    <td>{{ exam.name }}</td>
+                    <td>{{ exam.description| default('-') }}</td>
+                    <td>
+                        <a class="btn btn-success" role="button"
+                           href="{{ path('app_exam_show', {id: exam.id}) }}">Pokaż</a>
+                        <input type="hidden" class="elem-id" value="{{ exam.id }}">
+                        <button type="button" class="btn btn-danger delete-button">Usuń</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

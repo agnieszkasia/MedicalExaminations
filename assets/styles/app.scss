@@ -1,0 +1,31 @@
+$primary-color: #119308;
+$secondary-color: #41b03b;
+$error-color: #ee6c6c;
+
+#add-button {
+  background-color: $secondary-color;
+}
+
+.btn-success {
+  background-color: $primary-color;
+}
+
+.btn-danger {
+  background-color: $error-color;
+}
+
+.example-wrapper {
+  margin: 1em auto;
+  max-width: 800px;
+  width: 95%;
+  font: 18px/1.5 sans-serif;
+}
+
+.example-wrapper code {
+  background: #F5F5F5;
+  padding: 2px 6px;
+}
+
+#add-element {
+  display: none;
+}
